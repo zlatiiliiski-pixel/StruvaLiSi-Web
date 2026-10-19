@@ -1,7 +1,47 @@
 <!doctype html>
 <html lang="bg"><head>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1972776102778744" crossorigin="anonymous"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f4f5f0"><meta name="description" content="Сравни реалните разходи за употребявани автомобили преди покупка."><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg" type="image/svg+xml"><title>Струва ли си? — калкулатор за автомобил</title>
-<style>
+
+<style>/* Поправка на белите полета */
+.card,
+.car-card,
+.vehicle-card,
+fieldset,
+.form-card,
+details {
+  background: #172b45 !important;
+  color: #f1f5f9 !important;
+  border: 1px solid #385373 !important;
+}
+
+.card *,
+.car-card *,
+.vehicle-card *,
+fieldset *,
+.form-card *,
+details * {
+  color: #e2e8f0;
+}
+
+input,
+select,
+textarea {
+  background: #0b1729 !important;
+  color: #ffffff !important;
+  border: 1px solid #64748b !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+label,
+legend {
+  color: #cbd5e1 !important;
+}
+</style>
+  <style>
 :root{--ink:#17231d;--muted:#69756d;--green:#1e6248;--lime:#d9f074;--paper:#f4f5f0;--line:#e4e8df;--white:#fff;--orange:#e89e54}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}button,input{font:inherit}button{cursor:pointer}.wrap{max-width:950px;margin:auto;padding:22px 18px 54px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}.logo{font-weight:800;letter-spacing:-.03em;font-size:17px;display:flex;align-items:center;gap:8px}.logo-mark{display:grid;place-items:center;background:var(--lime);width:32px;height:32px;border-radius:11px}.top-note{font-size:12px;color:var(--muted)}.hero{background:var(--green);color:white;border-radius:25px;padding:25px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:240px;height:240px;border:1px solid #ffffff25;border-radius:50%;right:-60px;top:-115px;box-shadow:0 0 0 28px #ffffff0c,0 0 0 58px #ffffff08;pointer-events:none}.kicker{text-transform:uppercase;letter-spacing:.14em;color:#cfdfd5;font-size:11px;font-weight:750}.hero h1{font-size:clamp(34px,7vw,55px);line-height:.99;letter-spacing:-.055em;margin:12px 0}.hero p{max-width:540px;color:#d9e7de;margin:0;font-size:15px}.hero strong{color:var(--lime)}.quick{display:flex;align-items:center;gap:10px;margin-top:20px;position:relative;z-index:1}.quick label{color:#d9e7de;font-size:13px}.quick input{width:125px}.field input{width:100%;border:1px solid var(--line);background:#fff;border-radius:11px;padding:10px 11px;color:var(--ink);outline:none}.field input:focus{border-color:var(--green);box-shadow:0 0 0 3px #1e62481a}.quick input{border:1px solid #ffffff40;background:#ffffff12;border-radius:10px;color:#fff;padding:9px 11px}.quick input::placeholder{color:#cfdfd5}.unit{font-size:11px;color:var(--muted);margin-top:4px}.quick .unit{color:#cfdfd5;margin:0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:23px 2px 11px}.section-head h2{font-size:20px;letter-spacing:-.03em;margin:0}.section-head p{font-size:12px;color:var(--muted);margin:3px 0 0}.actions{display:flex;gap:8px}.btn{border:0;border-radius:11px;padding:10px 13px;font-weight:700;font-size:13px}.btn.light{background:#fff;color:var(--green);border:1px solid var(--line)}.btn.green{background:var(--green);color:white}.cars{display:grid;grid-template-columns:1fr 1fr;gap:14px}.car{background:#fff;border:1px solid var(--line);border-radius:19px;padding:17px;min-width:0}.car-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.car-title{font-weight:800}.badge{font-size:10px;font-weight:750;color:var(--green);background:#eaf2e9;border-radius:99px;padding:5px 8px}.car-b .badge{background:#f0eee4;color:#777045}.fields{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field label{display:block;font-size:11px;color:var(--muted);font-weight:650;margin:0 0 5px}.field.wide{grid-column:1/-1}.field input{font-size:14px;padding:10px}.field input::placeholder{color:#a1aaa2}.divider{grid-column:1/-1;border-top:1px solid var(--line);margin:3px 0 0;padding-top:11px;font-size:11px;color:var(--muted);font-weight:750;text-transform:uppercase;letter-spacing:.06em}.result{margin-top:13px;background:#f3f6ee;border-radius:14px;padding:13px}.result-top{display:flex;justify-content:space-between;gap:8px;align-items:start}.result-label{font-size:11px;color:var(--muted)}.total{font-weight:850;font-size:21px;letter-spacing:-.03em}.metric{display:flex;gap:14px;margin-top:10px;padding-top:9px;border-top:1px solid #e1e8dc}.metric span{font-size:11px;color:var(--muted)}.metric b{display:block;color:var(--ink);font-size:13px}.choice{font-size:11px;color:var(--green);font-weight:750;text-align:right;max-width:110px}.compare{display:none;margin-top:14px;border-radius:17px;background:#192820;color:#fff;padding:17px 19px}.compare.show{display:block}.compare h3{margin:0 0 5px;font-size:16px}.compare p{margin:0;color:#d3ddd5;font-size:13px}.compare strong{color:var(--lime)}.disclaimer{font-size:11px;color:var(--muted);margin:12px 3px 0}.formula{margin-top:12px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px}.formula summary{cursor:pointer;color:var(--green);font-weight:750}.formula-body{margin-top:12px;color:#445148;font-size:13px}.formula-body p{margin:8px 0}.formula-body ul{margin:7px 0;padding-left:20px}.formula-body li{margin:4px 0}.formula-equation{padding:11px 12px;background:#f3f6ee;border-radius:11px;font-weight:750;color:var(--ink)}.formula-example{padding:10px 12px;border-left:3px solid var(--lime);background:#f9faf7;border-radius:0 10px 10px 0}.check-panel{background:#fff;border:1px solid var(--line);border-radius:19px;padding:17px;margin-top:15px}.check-panel h2{font-size:16px;margin:0 0 10px}.checks{display:grid;grid-template-columns:1fr 1fr;gap:8px}.checks label{font-size:12px;color:#445148;display:flex;align-items:start;gap:8px}.checks input{accent-color:var(--green);margin-top:2px}.ad{margin-top:15px;min-height:72px;border:1px dashed #c8cec5;border-radius:16px;display:grid;place-items:center;text-align:center;color:#778078;font-size:12px;background:#f9faf7}.ad strong{display:block;font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:#919a92;margin-bottom:2px}.footer{text-align:center;color:#929a92;font-size:11px;margin-top:18px}.toast{position:fixed;bottom:18px;left:50%;transform:translate(-50%,18px);opacity:0;transition:.2s;background:#17231d;color:white;padding:10px 15px;border-radius:30px;font-size:13px;pointer-events:none}.toast.show{opacity:1;transform:translate(-50%,0)}@media(max-width:700px){.cars{grid-template-columns:1fr}.wrap{padding:15px 14px 38px}.hero{padding:21px}.section-head{align-items:start;flex-direction:column}.quick{flex-wrap:wrap}.top-note{max-width:130px;text-align:right}.checks{grid-template-columns:1fr}.actions{width:100%}.actions .btn{flex:1}}
 
 /* Дизайн като началната страница */
