@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Безплатен калкулатор за оценка на автомобил преди покупка.">
+<title>Оценка на автомобил | Струва ли си?</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0b1120;color:#f1f5f9;font-family:Arial,sans-serif;line-height:1.5}
+header{padding:20px;text-align:center;background:#111c32}
+header a{color:#93c5fd;text-decoration:none}
+main{max-width:700px;margin:35px auto;padding:0 18px}
+h1{text-align:center;font-size:29px}
+.intro{text-align:center;color:#aebdd0}
+.card{background:#17243b;border:1px solid #334155;border-radius:16px;padding:24px;margin-top:22px}
+label{display:block;margin:16px 0 6px;font-weight:bold}
+input,select{width:100%;padding:13px;border:1px solid #475569;border-radius:9px;background:#fff;color:#111827;font-size:16px}
+button{width:100%;padding:16px;margin-top:25px;border:0;border-radius:10px;background:#38bdf8;color:#071525;font-size:18px;font-weight:bold;cursor:pointer}
+button:hover{background:#7dd3fc}
+.result{display:none}
+.good{color:#4ade80}
+.medium{color:#facc15}
+.high{color:#fb7185}
+.big{font-size:29px;font-weight:bold}
+small,.note{color:#b7c5d6}
+footer{text-align:center;padding:35px;color:#94a3b8}
+footer a{color:#93c5fd}
+</style>
+</head>
+<body>
+<header>
+<a href="index.html">← Начална страница</a>
+</header>
+
+<main>
+<h1>🚗 Струва ли си тази кола?</h1>
+<p class="intro">Провери ориентировъчните разходи и рискове преди покупка.</p>
+
+<div class="card">
+<label for="car">Марка и модел</label>
+<input id="car" placeholder="Например Seat Leon 1.6 TDI">
+
+<label for="year">Година на производство</label>
+<input id="year" type="number" min="1950" max="2027" value="2016">
+
+<label for="km">Пробег (км)</label>
+<input id="km" type="number" min="0" placeholder="Например 180000">
+
+<label for="fuel">Гориво</label>
+<select id="fuel">
+<option value="petrol">Бензин</option>
+<option value="diesel">Дизел</option>
+<option value="lpg">Газ / бензин</option>
+<option value="hybrid">Хибрид</option>
+<option value="electric">Електрически</option>
+</select>
+
+<label for="price">Цена на автомобила (€)</label>
+<input id="price" type="number" min="0" placeholder="Например 8500">
+
+<label for="repairs">Очаквани първоначални ремонти (€)</label>
+<input id="repairs" type="number" min="0" value="500">
+
+<label for="fees">Прехвърляне, регистрация и други такси (€)</label>
+<input id="fees" type="number" min="0" value="300">
+
+<label for="budget">Общ бюджет за покупката (€)</label>
+<input id="budget" type="number" min="0" placeholder="Например 10000">
+
+<button onclick="calculate()">🔍 Оцени автомобила</button>
+</div>
+
+<div class="card result" id="result" aria-live="polite">
+<h2>📊 Резултат</h2>
+<p id="carName"></p>
+<p>Ориентировъчна обща цена:</p>
+<div class="big" id="total"></div>
+<p id="budgetResult"></p>
+<h3 id="risk"></h3>
+<p id="riskDetails"></p>
+<p id="recommendation"></p>
+<p class="note">Това е ориентировъчна оценка по въведени данни, а не проверка на реална пазарна цена или техническо състояние. Преди покупка направи диагностика, оглед в сервиз и проверка на историята.</p>
+</div>
+</main>
+
+<footer>
+<a href="privacy.html">Политика за поверителност</a>
+<p>© 2026 Струва ли си?</p>
+</footer>
+
+<script>
+function euro(n){
+return new Intl.NumberFormat('bg-BG',{style:'currency',currency:'EUR'}).format(n);
+}
+function calculate(){
+const name=document.getElementById('car').value.trim();
+const year=Number(document.getElementById('year').value);
+const km=Number(document.getElementById('km').value);
+const price=Number(document.getElementById('price').value);
+const repairs=Number(document.getElementById('repairs').value);
+const fees=Number(document.getElementById('fees').value);
+const budget=Number(document.getElementById('budget').value);
+const fuel=document.getElementById('fuel').value;
+const currentYear=new Date().getFullYear();
+
+if(!year||year<1950||year>currentYear+1||
+!document.getElementById('km').value||
+!document.getElementById('price').value||
+!document.getElementById('budget').value||
+[km,price,repairs,fees,budget].some(n=>!Number.isFinite(n)||n<0)||
+price<=0||budget<=0){
+alert('Попълни коректно година, пробег, цена и бюджет.');
+return;
+}
+
+const age=Math.max(0,currentYear-year);
+const total=price+repairs+fees;
+let score=0;
+let reasons=[];
+
+if(age>=15){score+=2;reasons.push('Автомобилът е на 15 или повече години.');}
+else if(age>=10){score+=1;reasons.push('Автомобилът е над 10 години.');}
+
+if(km>=250000){score+=2;reasons.push('Пробегът е над 250 000 км.');}
+else if(km>=150000){score+=1;reasons.push('Пробегът е над 150 000 км.');}
+
+if(fuel==='diesel' && km>=180000){
+score+=1;
+reasons.push('При дизел с висок пробег провери DPF, EGR, турбо и горивна система.');
+}
+
+if(repairs>price*0.2){
+score+=1;
+reasons.push('Предвидените ремонти са над 20% от цената.');
+}
+
+let cls='good',level='По-нисък ориентировъчен риск';
+if(score>=4){cls='high';level='Повишен ориентировъчен риск';}
+else if(score>=2){cls='medium';level='Умерен ориентировъчен риск';}
+
+document.getElementById('carName').textContent=name||'Избраният автомобил';
+document.getElementById('total').textContent=euro(total);
+const diff=budget-total;
+document.getElementById('budgetResult').textContent=diff>=0
+?'Остават ти '+euro(diff)+' от бюджета.'
+:'Надвишаваш бюджета с '+euro(-diff)+'.';
+
+document.getElementById('risk').textContent=level;
+document.getElementById('risk').className=cls;
+document.getElementById('riskDetails').textContent=reasons.length
+?reasons.join(' ')
+:'Няма допълнителни предупреждения по избраните опростени критерии.';
+
+document.getElementById('recommendation').textContent=diff<0
+?'⚠️ Покупката надхвърля зададения бюджет. Помисли за по-евтин автомобил или по-голям резерв.'
+:score>=4
+?'⚠️ Предвиди резерв за непредвидени ремонти и задължителен преглед в сервиз.'
+:'✅ Покупката се побира в бюджета, но провери техническото състояние и реалната пазарна цена.';
+
+document.getElementById('result').style.display='block';
+document.getElementById('result').scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>
