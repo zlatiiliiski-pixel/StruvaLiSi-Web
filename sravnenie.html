@@ -159,9 +159,57 @@ div[style*="background:#fff"]{
   background: #0b1729 !important;
   color: #ffffff !important;
 }
+
+/* Горно навигационно меню */
+.site-menu {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 18px;
+  margin-bottom: 24px;
+  background: #0c1628;
+  border: 1px solid #334155;
+  border-radius: 12px;
+}
+
+.site-menu a {
+  color: #e2e8f0;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 9px 12px;
+  border-radius: 8px;
+}
+
+.site-menu a:hover {
+  background: #17375b;
+  color: #38bdf8;
+}
+
+@media (max-width: 600px) {
+  .site-menu {
+    gap: 6px;
+    padding: 10px;
+  }
+
+  .site-menu a {
+    font-size: 12px;
+    padding: 8px;
+  }
+}
 </style></head><body><main class="wrap">
 <header class="top"><div class="logo"><span class="logo-mark">🚗</span> Струва ли си?</div><div class="top-note">Преди да подпишеш — сметни цялата цена.</div></header>
-<section class="hero"><div class="kicker">Употребяван автомобил • калкулатор</div><h1>Харесва ти колата.<br><strong>А сметката?</strong></h1><p>Сравни колко ще ти струват два автомобила през годините — не само на обявата, а и след покупката.</p><div class="quick"><label for="years">Колко години планираш да я караш?</label><input id="years" type="number" min="1" max="15" value="5"><span class="unit">години</span></div></section>
+
+<nav class="site-menu">
+  <a href="index.html">🏠 Начало</a>
+  <a href="sravnenie.html">⚖️ Сравнение</a>
+  <a href="ocenka-avtomobil.html">🚗 Оценка на кола</a>
+  <a href="gorivo.html">⛽ Гориво</a>
+  <a href="razhodi.html">💶 Разходи</a>
+  <a href="syveti.html">📘 Съвети</a>
+</nav>
+
+  <section class="hero"><div class="kicker">Употребяван автомобил • калкулатор</div><h1>Харесва ти колата.<br><strong>А сметката?</strong></h1><p>Сравни колко ще ти струват два автомобила през годините — не само на обявата, а и след покупката.</p><div class="quick"><label for="years">Колко години планираш да я караш?</label><input id="years" type="number" min="1" max="15" value="5"><span class="unit">години</span></div></section>
 <div class="section-head"><div><h2>Сравни два автомобила</h2><p>Попълни данните от обявата и направи разумна прогноза за разходите.</p></div><div class="actions"><button class="btn light" id="share">Сподели сметката</button><button class="btn light" id="reset">Изчисти</button></div></div>
 <section class="cars" id="cars"></section><section class="compare" id="compare"></section>
 <p class="disclaimer">Оценката е ориентировъчна и зависи от въведените от теб стойности. Тя не оценява пазарната цена и не заменя оглед в сервиз, проверка на документи или тест драйв.</p><details class="formula"><summary>Как приложението смята общата цена?</summary><div class="formula-body"><p>Приложението прави три неща:</p><ol><li>Взима цената, която плащаш за колата.</li><li>Изважда парите, за които очакваш да я продадеш по-късно.</li><li>Добавя разходите за гориво, застраховки, данък и винетка, обслужване и ремонти за избраните години.</li></ol><p>Разходът за гориво се пресмята според километрите, разхода на колата и цената на литър.</p><p class="formula-example"><strong>Пример за 5 години:</strong> купуваш кола за 20 000 € и очакваш да я продадеш за 8 000 €. Всичките ѝ годишни разходи са 3 675 €.<br>Сметката е: 20 000 € − 8 000 € + 3 675 € за всяка от 5-те години = <strong>30 375 € общо</strong>.</p><p>Това е приблизителна сметка. Приложението използва числата, които въвеждаш. Празните полета не се включват.</p></div></details>
